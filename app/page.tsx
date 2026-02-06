@@ -13,6 +13,7 @@ import Navbar from '@/components/NavBar';
 import Hero from '@/components/Hero';
 import Benefits from '@/components/Benefits';
 import Services from '@/components/Services';
+import Logo from '@/components/Logo';
 
 export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -181,10 +182,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-4 gap-20 mb-20">
             <div className="col-span-2 space-y-8">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-[#fdd835] rounded-xl flex items-center justify-center text-[#00227b]"><Droplets size={28} /></div>
-                <span className="font-black text-2xl tracking-tighter uppercase">Bubbles Bay</span>
-              </div>
+              <Logo />
               <p className="text-white/40 text-lg font-medium leading-relaxed max-w-md italic">
                 The ultimate automotive grooming experience in Malete. Precision, Luxury, and Unparalleled Care.
               </p>
@@ -230,6 +228,7 @@ export default function App() {
               <SectionHeading subtitle="Appointment" title={<span>Book <span className="font-black italic">Now</span></span>} />
               <div className="space-y-4">
                 <input type="text" placeholder="Your Full Name" className="w-full bg-gray-50 p-6 rounded-2xl border-2 border-transparent focus:border-[#fdd835] outline-none font-bold text-[#00227b] transition-all" />
+                <input type="tel" placeholder="Your Phone Number" className="w-full bg-gray-50 p-6 rounded-2xl border-2 border-transparent focus:border-[#fdd835] outline-none font-bold text-[#00227b] transition-all" />
                 <select className="w-full bg-gray-50 p-6 rounded-2xl border-2 border-transparent focus:border-[#fdd835] outline-none font-bold text-[#00227b] transition-all">
                   <option>Select Service</option>
                   {services.map(s => <option key={s.name}>{s.name}</option>)}

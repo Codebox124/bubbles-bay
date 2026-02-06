@@ -3,9 +3,10 @@
 import { useState, useEffect } from 'react';
 import { Droplets, Menu, X } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
+import Logo from './Logo';
 
 
-interface NavbarProps{
+interface NavbarProps {
     onBookClick: any
 }
 export default function Navbar({ onBookClick }: NavbarProps) {
@@ -27,12 +28,9 @@ export default function Navbar({ onBookClick }: NavbarProps) {
 
     return (
         <>
-            <nav className={`fixed w-full z-[100] py-5 px-6 md:px-12 flex justify-between items-center transition-all duration-500 ${isScrolled ? 'bg-[#00227b]/75 backdrop-blur-md shadow-2xl py-3' : 'bg-transparent'}`}>
+            <nav className={`fixed w-full z-[100] py-2 px-6 md:px-12 flex justify-between items-center transition-all duration-500 ${isScrolled ? 'bg-[#00227b]/75 backdrop-blur-md shadow-2xl py-3' : 'bg-transparent'}`}>
                 <div className="flex items-center gap-3 group cursor-pointer">
-                    <div className="w-10 h-10 rounded-xl bg-[#fdd835] flex items-center justify-center shadow-lg group-hover:rotate-12 transition-transform">
-                        <Droplets className="text-[#00227b]" size={22} />
-                    </div>
-                    <span className="font-black text-xl tracking-tighter text-white uppercase">Bubbles Bay</span>
+                    <Logo />
                 </div>
 
                 <div className="hidden lg:flex space-x-10 font-black text-[10px] tracking-[0.3em] text-white uppercase">

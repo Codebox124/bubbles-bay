@@ -26,7 +26,12 @@ const Hero = ({ setIsModalOpen }: { setIsModalOpen: (open: boolean) => void }) =
                         initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}
                         className="text-6xl md:text-8xl font-light text-white leading-[0.9] mb-12"
                     >
-                        Refining <br /> <span className="font-black italic text-[#fdd835]">the Art</span> of <br /> <span className="font-black italic text-[#fdd835]">Luxury</span>
+                        It's <br /> <span className="font-black italic text-[#fdd835]">not just</span> a <br /> <span className="font-black italic text-[#fdd835]">Wash</span>
+
+                        <br className='mt-0 pt-0' />
+                        <span className="mt-0 inline-flex items-center bg-white/10 backdrop-blur-md border border-white/20 px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.4em] text-white/70">
+                            It's a <span className="ml-2 italic text-[#fdd835]">Vibe</span>
+                        </span>
                     </motion.h1>
                     <motion.div
                         initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}
