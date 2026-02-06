@@ -8,6 +8,16 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "images.unsplash.com",
       },
+      {
+        protocol: "https",
+        hostname: "cdn.pixabay.com",
+        pathname: "/videos/**",
+      },
+      {
+        protocol: "https",
+        hostname: "assets.mixkit.co",
+        pathname: "/videos/**",
+      },
     ],
   },
 };
