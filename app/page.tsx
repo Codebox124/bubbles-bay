@@ -14,56 +14,74 @@ import Hero from '@/components/Hero';
 import Benefits from '@/components/Benefits';
 import Services from '@/components/Services';
 import Logo from '@/components/Logo';
+import Pricing from '@/components/Pricing';
+import Testimonials from '@/components/Testimonials';
+import BookingModal from '@/components/BookingModal';
 
 export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
 
   const handleNext = () => {
-    setActiveIndex((prev) => (prev + 1) % services.length);
+    setActiveIndex((prev) => (prev + 1) % 2);
   };
 
   const handlePrev = () => {
-    setActiveIndex((prev) => (prev - 1 + services.length) % services.length);
+    setActiveIndex((prev) => (prev - 1 + 2) % 2);
   };
 
+  // Hold on now, This part is sensitive.. changing the index of any item in this list would affect the services courosel UI :)
   const services = [
+    {
+      name: "View All Services",
+      desc: "View all our services",
+      icon: <ChevronRight />,
+      img: "https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?auto=format&fit=crop&q=80&w=800",
+      isGoToFullServicesCard: true
+    },
     {
       name: "Full-Service Wash",
       desc: "Comprehensive interior and exterior cleaning with premium soaps.",
       icon: <Waves />,
-      img: "https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?auto=format&fit=crop&q=80&w=800"
+      img: "https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?auto=format&fit=crop&q=80&w=800",
+      isGoToFullServicesCard: false
     },
     {
       name: "Ceramic Coating",
       desc: "9H Hardness protection for long-lasting paint brilliance.",
       icon: <ShieldCheck />,
-      img: "https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&q=80&w=800"
+      img: "https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&q=80&w=800",
+      isGoToFullServicesCard: false
     },
+
     {
       name: "Interior Deep Cleaning",
       desc: "Steam sanitation and upholstery restoration for a factory feel.",
       icon: <Sparkles />,
-      img: "https://images.unsplash.com/photo-1599256621730-535171e28e50?auto=format&fit=crop&q=80&w=800"
+      img: "https://images.unsplash.com/photo-1599256621730-535171e28e50?auto=format&fit=crop&q=80&w=800",
+      isGoToFullServicesCard: false
     },
     {
       name: "Engine Cleaning",
       desc: "Precision degreasing and detailing for peak engine aesthetics.",
       icon: <Zap />,
-      img: "https://images.unsplash.com/photo-1656958258484-7ee6452cfd92?q=80&w=464&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      img: "https://images.unsplash.com/photo-1656958258484-7ee6452cfd92?q=80&w=464&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      isGoToFullServicesCard: false
     },
     {
       name: "Waxing & Polishing",
       desc: "High-gloss buffing that removes swirl marks and restores shine.",
       icon: <Award />,
-      img: "https://images.unsplash.com/photo-1552930294-6b595f4c2974?auto=format&fit=crop&q=80&w=800"
+      img: "https://images.unsplash.com/photo-1552930294-6b595f4c2974?auto=format&fit=crop&q=80&w=800",
+      isGoToFullServicesCard: false
     },
     {
       name: "Mobile Car Wash",
       desc: "We bring the bubbles to your doorstep. Convenience redefined.",
       icon: <Navigation />,
-      img: "https://images.unsplash.com/photo-1507136566006-cfc505b114fc?auto=format&fit=crop&q=80&w=800"
-    }
+      img: "https://images.unsplash.com/photo-1507136566006-cfc505b114fc?auto=format&fit=crop&q=80&w=800",
+      isGoToFullServicesCard: false
+    },
   ];
 
   const testimonials = [
@@ -90,29 +108,9 @@ export default function App() {
       <Services setIsModalOpen={setIsModalOpen} activeIndex={activeIndex} setActiveIndex={setActiveIndex} services={services} handleNext={handleNext} handlePrev={handlePrev} />
 
       {/* Testimonials */}
-      <section id="reviews" className="py-32 px-6 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <SectionHeading subtitle="Success Stories" title={<span>What our <span className="font-black italic">Clients</span> Say</span>} />
+      <Testimonials testimonials={testimonials} />
 
-          <div className="grid lg:grid-cols-3 gap-8">
-            {testimonials.map((t, i) => (
-              <motion.div key={i} className="p-12 rounded-[3.5rem] bg-gray-50 border border-gray-100">
-                <div className="flex text-[#fdd835] mb-6 gap-1">
-                  {[...Array(t.stars)].map((_, j) => <Star key={j} size={14} fill="currentColor" />)}
-                </div>
-                <p className="text-lg font-medium italic text-[#00227b]/80 mb-8 leading-relaxed">"{t.text}"</p>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-[#00227b] rounded-full flex items-center justify-center text-white font-black">{t.name[0]}</div>
-                  <div>
-                    <h5 className="font-black text-sm uppercase tracking-widest">{t.name}</h5>
-                    <p className="text-gray-400 text-[10px] font-black uppercase tracking-widest">{t.role}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <Pricing setIsModalOpen={setIsModalOpen} />
 
       {/* Location & Contact Section */}
       <section id="location" className="py-32 px-6 bg-[#00227b] overflow-hidden relative">
@@ -216,30 +214,7 @@ export default function App() {
       </footer>
 
       {/* Booking Modal */}
-      <AnimatePresence>
-        {isModalOpen && (
-          <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setIsModalOpen(false)} className="absolute inset-0 bg-black/80 backdrop-blur-md" />
-            <motion.div
-              initial={{ scale: 0.9, y: 50 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.9, y: 50 }}
-              className="relative bg-white w-full max-w-lg rounded-[3.5rem] p-12 shadow-2xl overflow-hidden"
-            >
-              <button onClick={() => setIsModalOpen(false)} className="absolute top-10 right-10 text-gray-400"><X size={28} /></button>
-              <SectionHeading subtitle="Appointment" title={<span>Book <span className="font-black italic">Now</span></span>} />
-              <div className="space-y-4">
-                <input type="text" placeholder="Your Full Name" className="w-full bg-gray-50 p-6 rounded-2xl border-2 border-transparent focus:border-[#fdd835] outline-none font-bold text-[#00227b] transition-all" />
-                <input type="tel" placeholder="Your Phone Number" className="w-full bg-gray-50 p-6 rounded-2xl border-2 border-transparent focus:border-[#fdd835] outline-none font-bold text-[#00227b] transition-all" />
-                <select className="w-full bg-gray-50 p-6 rounded-2xl border-2 border-transparent focus:border-[#fdd835] outline-none font-bold text-[#00227b] transition-all">
-                  <option>Select Service</option>
-                  {services.map(s => <option key={s.name}>{s.name}</option>)}
-                </select>
-                <input type="date" className="w-full bg-gray-50 p-6 rounded-2xl border-2 border-transparent focus:border-[#fdd835] outline-none font-bold text-[#00227b] transition-all" />
-                <button className="w-full bg-[#00227b] text-white py-6 rounded-2xl font-black uppercase text-xs tracking-widest shadow-xl shadow-blue-900/20 mt-6">Confirm Request</button>
-              </div>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
+      <BookingModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} services={services} />
     </div>
   );
 }

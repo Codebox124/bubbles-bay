@@ -28,9 +28,10 @@ const Hero = ({ setIsModalOpen }: { setIsModalOpen: (open: boolean) => void }) =
                     >
                         It's <br /> <span className="font-black italic text-[#fdd835]">not just</span> a <br /> <span className="font-black italic text-[#fdd835]">Wash</span>
 
-                        <br className='mt-0 pt-0' />
-                        <span className="mt-0 inline-flex items-center bg-white/10 backdrop-blur-md border border-white/20 px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.4em] text-white/70">
-                            It's a <span className="ml-2 italic text-[#fdd835]">Vibe</span>
+                        <span className="block md:-mt-6">
+                            <span className="inline-flex items-center bg-white/10 backdrop-blur-md border border-white/20 px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.4em] text-white/70">
+                                It's a <span className="ml-2 italic text-[#fdd835]">Vibe</span>
+                            </span>
                         </span>
                     </motion.h1>
                     <motion.div
