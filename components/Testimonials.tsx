@@ -1,38 +1,135 @@
-"use client"
+"use client";
 
-import React from 'react'
-import SectionHeading from './SectionHeading'
-import { motion } from 'framer-motion'
-import { Star } from 'lucide-react'
+import React from "react";
+import { motion } from "framer-motion";
+import { Star, Quote, BadgeCheck, CarFront } from "lucide-react";
 
-const Testimonials = ({ testimonials }: { testimonials: { name: string, role: string, text: string, stars: number }[] }) => {
-    return (
-        <div>
-            <section id="reviews" className="py-32 px-6 bg-white">
-                <div className="max-w-7xl mx-auto">
-                    <SectionHeading subtitle="Success Stories" title={<span>What our <span className="font-black italic">Clients</span> Say</span>} />
-
-                    <div className="grid lg:grid-cols-3 gap-8">
-                        {testimonials.map((t, i) => (
-                            <motion.div key={i} className="p-12 rounded-[3.5rem] bg-gray-50 border border-gray-100">
-                                <div className="flex text-[#fdd835] mb-6 gap-1">
-                                    {[...Array(t.stars)].map((_, j) => <Star key={j} size={14} fill="currentColor" />)}
-                                </div>
-                                <p className="text-lg font-medium italic text-[#00227b]/80 mb-8 leading-relaxed">"{t.text}"</p>
-                                <div className="flex items-center gap-4">
-                                    <div className="w-12 h-12 bg-[#00227b] rounded-full flex items-center justify-center text-white font-black">{t.name[0]}</div>
-                                    <div>
-                                        <h5 className="font-black text-sm uppercase tracking-widest">{t.name}</h5>
-                                        <p className="text-gray-400 text-[10px] font-black uppercase tracking-widest">{t.role}</p>
-                                    </div>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-        </div>
-    )
+interface Testimonial {
+  name: string;
+  role: string;
+  vehicle?: string;
+  text: string;
+  stars: number;
 }
 
-export default Testimonials
+const Testimonials = ({ testimonials }: { testimonials: Testimonial[] }) => {
+  const stats = [
+    { label: "Client Satisfaction", value: "100%" },
+    { label: "5-Star Reviews", value: "90+" },
+    { label: "Cars Detailed", value: "100+" },
+  ];
+
+  return (
+    <section className="relative py-24 md:py-32 px-4 sm:px-6 bg-[#0A0A0A] overflow-hidden">
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-[0.02]">
+        <span className="text-[25vw] font-black uppercase text-white leading-none whitespace-nowrap absolute -top-10 left-0">
+          Trust
+        </span>
+        <span className="text-[20vw] font-black uppercase text-white leading-none whitespace-nowrap absolute bottom-0 right-0">
+          Results
+        </span>
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-24 gap-10">
+          <div className="max-w-2xl">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="flex items-center gap-3 text-[#C5A059] font-black uppercase tracking-[0.4em] text-[10px] mb-6"
+            >
+              <span className="w-8 h-px bg-[#C5A059]"></span>
+              Client Stories
+            </motion.div>
+            <h2 className="text-4xl sm:text-5xl lg:text-7xl font-medium text-[#F5F5F5] tracking-tighter leading-[1.1]">
+              The Standard <br />
+              <span className="font-black italic text-transparent bg-clip-text bg-gradient-to-r from-[#C5A059] to-[#F5F5F5]">
+                of Appreciation.
+              </span>
+            </h2>
+          </div>
+
+          <div className="w-full md:w-auto overflow-x-auto md:overflow-visible -mx-4 sm:mx-0">
+            <div className="flex gap-12 border-l border-white/5 pl-8 min-w-max md:min-w-0">
+              {stats.map((stat, i) => (
+                <div key={i}>
+                  <h4 className="text-3xl font-black text-[#F5F5F5]">
+                    {stat.value}
+                  </h4>
+                  <p className="text-[#C5A059] text-[9px] uppercase tracking-[0.3em] mt-2 font-bold">
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {testimonials.map((t, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.1 }}
+              viewport={{ once: true }}
+              className="group relative flex flex-col justify-between p-8 md:p-10 rounded-[2.5rem] bg-[#141414]/50 backdrop-blur-md border border-white/5 hover:border-[#C5A059]/30 hover:bg-[#141414] transition-all duration-700 shadow-2xl"
+            >
+              <div className="absolute top-10 right-10 text-white/[0.03] group-hover:text-[#C5A059]/10 transition-colors duration-700">
+                <Quote size={64} fill="currentColor" />
+              </div>
+
+              <div className="relative z-10">
+                <div className="flex gap-1.5 mb-8">
+                  {[...Array(5)].map((_, j) => (
+                    <Star
+                      key={j}
+                      size={14}
+                      fill={j < t.stars ? "#C5A059" : "none"}
+                      className={j < t.stars ? "text-[#C5A059]" : "text-[#333]"}
+                    />
+                  ))}
+                </div>
+
+                <p className="text-lg md:text-xl font-medium text-[#B0B0B0] group-hover:text-[#F5F5F5] leading-relaxed transition-colors duration-500 italic">
+                  "{t.text}"
+                </p>
+              </div>
+
+              <div className="mt-10 pt-8 border-t border-white/5 group-hover:border-[#C5A059]/10 transition-colors">
+                <div className="flex items-center justify-between gap-4">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-2xl bg-[#1E1E1E] border border-white/5 flex items-center justify-center text-[#C5A059] font-black text-sm group-hover:shadow-[0_0_15px_rgba(197,160,89,0.1)] transition-all">
+                      {t.name[0]}
+                    </div>
+                    <div>
+                      <h5 className="font-black text-[11px] text-[#F5F5F5] uppercase tracking-[0.2em] flex items-center gap-2">
+                        {t.name}
+                        <BadgeCheck size={14} className="text-[#C5A059]" />
+                      </h5>
+                      <p className="text-[#666] text-[9px] font-bold uppercase tracking-widest mt-1 group-hover:text-[#C5A059]/60">
+                        {t.role}
+                      </p>
+                    </div>
+                  </div>
+
+                  {t.vehicle && (
+                    <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#1E1E1E] border border-white/5 transition-all">
+                      <CarFront size={12} className="text-[#C5A059]" />
+                      <span className="text-[9px] font-bold uppercase text-[#888] tracking-widest">
+                        {t.vehicle}
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Testimonials;
