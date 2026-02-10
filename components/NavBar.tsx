@@ -1,72 +1,123 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from 'react';
-import { Droplets, Menu, X } from 'lucide-react';
-import { AnimatePresence, motion } from 'framer-motion';
-import Logo from './Logo';
-
+import { useState, useEffect } from "react";
+import { Menu, X, ArrowRight } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import Logo from "./Logo";
 
 interface NavbarProps {
-    onBookClick: any
+  onBookClick: () => void;
 }
+
 export default function Navbar({ onBookClick }: NavbarProps) {
-    const [isScrolled, setIsScrolled] = useState(false);
-    const [mobileMenu, setMobileMenu] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenu, setMobileMenu] = useState(false);
 
-    useEffect(() => {
-        const handleScroll = () => setIsScrolled(window.scrollY > 50);
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-    const navLinks = [
-        { name: 'Services', href: '#services' },
-        { name: 'Benefits', href: '#benefits' },
-        { name: 'Reviews', href: '#reviews' },
-        { name: 'Location', href: '#location' }
-    ];
+  const navLinks = [
+    { name: "Services", href: "#services" },
+    { name: "Benefits", href: "#benefits" },
+    { name: "Reviews", href: "#reviews" },
+    { name: "Location", href: "#location" },
+  ];
 
-    return (
-        <>
-            <nav className={`fixed w-full z-[100] py-2 px-6 md:px-12 flex justify-between items-center transition-all duration-500 ${isScrolled ? 'bg-[#00227b]/75 backdrop-blur-md shadow-2xl py-3' : 'bg-transparent'}`}>
-                <div className="flex items-center gap-3 group cursor-pointer">
-                    <Logo />
-                </div>
+  return (
+    <>
+      <nav
+        className={`fixed w-full z-[100] py-4 px-6 md:px-12 flex justify-between items-center transition-all duration-700 ${
+          isScrolled
+            ? "bg-[#0A0A0A]/80 backdrop-blur-xl border-b border-white/5 py-4"
+            : "bg-transparent py-8"
+        }`}
+      >
+        <div className="flex items-center gap-3 group cursor-pointer">
+          <Logo />
+        </div>
 
-                <div className="hidden lg:flex space-x-10 font-black text-[10px] tracking-[0.3em] text-white uppercase">
-                    {navLinks.map((link) => (
-                        <a key={link.name} href={link.href} className="hover:text-[#fdd835] transition-colors relative group">
-                            {link.name}
-                            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#fdd835] transition-all group-hover:w-full"></span>
-                        </a>
-                    ))}
-                </div>
+        <div className="hidden lg:flex space-x-12 font-bold text-[10px] tracking-[0.4em] text-[#808080] uppercase">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className="hover:text-[#C5A059] transition-colors relative group py-2"
+            >
+              {link.name}
+              <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-[#C5A059] transition-all duration-500 group-hover:w-full"></span>
+            </a>
+          ))}
+        </div>
 
-                <div className="flex items-center gap-4">
-                    <button
-                        onClick={onBookClick}
-                        className="hidden sm:block bg-[#fdd835] text-[#00227b] px-8 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all hover:scale-105 active:scale-95 shadow-xl shadow-yellow-500/20"
-                    >
-                        Book Session
-                    </button>
-                    <button onClick={() => setMobileMenu(true)} className="lg:hidden text-white"><Menu size={28} /></button>
-                </div>
-            </nav>
+        <div className="flex items-center gap-6">
+          <button
+            onClick={onBookClick}
+            className="hidden sm:flex items-center gap-3 bg-[#C5A059] text-[#0A0A0A] px-7 py-3 rounded-full text-[10px] font-black uppercase tracking-[0.2em] transition-all hover:bg-[#F5F5F5] hover:shadow-[0_0_20px_rgba(197,160,89,0.3)] active:scale-95"
+          >
+            Secure Slot
+            <ArrowRight size={14} />
+          </button>
 
-            {/* Mobile Menu */}
-            <AnimatePresence>
-                {mobileMenu && (
-                    <motion.div
-                        initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }}
-                        className="fixed inset-0 z-[110] bg-[#00227b] p-10 flex flex-col justify-center gap-8"
-                    >
-                        <button onClick={() => setMobileMenu(false)} className="absolute top-10 right-10 text-white"><X size={32} /></button>
-                        {navLinks.map(link => (
-                            <a key={link.name} href={link.href} onClick={() => setMobileMenu(false)} className="text-4xl font-light text-white italic">{link.name}</a>
-                        ))}
-                        <button onClick={() => { onBookClick(); setMobileMenu(false); }} className="bg-[#fdd835] text-[#00227b] py-6 rounded-2xl font-black uppercase text-xs tracking-widest">Book Now</button>
-                    </motion.div>
-                )}
-            </AnimatePresence>
-        </>)
+          <button
+            onClick={() => setMobileMenu(true)}
+            className="lg:hidden text-[#F5F5F5] p-2 hover:bg-white/5 rounded-lg transition-colors"
+          >
+            <Menu size={24} />
+          </button>
+        </div>
+      </nav>
+
+      <AnimatePresence>
+        {mobileMenu && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="fixed inset-0 z-[110] bg-[#0A0A0A] p-8 flex flex-col"
+          >
+            <div className="flex justify-between items-center mb-20">
+              <Logo />
+              <button
+                onClick={() => setMobileMenu(false)}
+                className="text-[#F5F5F5] p-2 border border-white/10 rounded-full"
+              >
+                <X size={24} />
+              </button>
+            </div>
+
+            <div className="flex flex-col gap-8">
+              {navLinks.map((link, i) => (
+                <motion.a
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setMobileMenu(false)}
+                  className="text-5xl font-medium text-[#F5F5F5] tracking-tighter hover:italic hover:text-[#C5A059] transition-all"
+                >
+                  {link.name}
+                </motion.a>
+              ))}
+            </div>
+
+            <div className="mt-auto pb-10">
+              <button
+                onClick={() => {
+                  onBookClick();
+                  setMobileMenu(false);
+                }}
+                className="w-full bg-[#C5A059] text-[#0A0A0A] py-6 rounded-2xl font-black uppercase text-xs tracking-[0.3em] flex items-center justify-center gap-4"
+              >
+                Book Appointment <ArrowRight size={18} />
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
 }

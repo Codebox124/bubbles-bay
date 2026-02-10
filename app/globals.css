@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -7,61 +7,69 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
+  background-color: #0a0a0a;
 }
 
 @layer utilities {
-  .carousel-immediate-parent:last-child {
-    padding-right: 24px;
-  }
   .text-balance {
     text-wrap: balance;
   }
-  
+
   .gradient-text {
-    background: linear-gradient(135deg, #00227b 0%, #1a3a8a 100%);
+    background: linear-gradient(135deg, #f5f5f5 0%, #c5a059 50%, #8a6e35 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  
+
   .blur-glass {
-    background: rgba(255, 255, 255, 0.85); /* Whiter glass */
+    background: rgba(20, 20, 20, 0.7);
     backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(197, 160, 89, 0.1);
   }
-  
-  .blur-glass-dark {
-    background: rgba(0, 34, 123, 0.4); /* Primary Blue tint */
-    backdrop-filter: blur(12px);
+
+  .blur-glass-light {
+    background: rgba(245, 245, 245, 0.05);
+    backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.1);
   }
-  
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
+
+  .map-background {
+    background-image: url("/map.avif");
   }
-  
-  @keyframes slide-in {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
+
+  @keyframes glow {
+    0%,
+    100% {
+      box-shadow: 0 0 5px rgba(197, 160, 89, 0.2);
     }
-    to {
-      opacity: 1;
-      transform: translateY(0);
+    50% {
+      box-shadow: 0 0 20px rgba(197, 160, 89, 0.4);
     }
   }
-  
-  @keyframes fade-in {
-    from { opacity: 0; }
-    to { opacity: 1; }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -1000px 0;
+    }
+    100% {
+      background-position: 1000px 0;
+    }
   }
-  
-  @keyframes slide-up {
+
+  .animate-glow {
+    animation: glow 3s ease-in-out infinite;
+  }
+  .animate-shimmer {
+    animation: shimmer 3s infinite linear;
+  }
+
+  @keyframes scroll-up {
     from {
       opacity: 0;
       transform: translateY(40px);
@@ -71,461 +79,64 @@ html {
       transform: translateY(0);
     }
   }
-  
-  @keyframes slide-down {
-    from {
-      opacity: 0;
-      transform: translateY(-40px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  @keyframes slide-left {
-    from {
-      opacity: 0;
-      transform: translateX(-40px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-  
-  @keyframes slide-right {
-    from {
-      opacity: 0;
-      transform: translateX(40px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-  
-  @keyframes pulse-slow {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.8; }
-  }
-  
-  @keyframes glow {
-    0%, 100% {
-      box-shadow: 0 0 5px rgba(0, 34, 123, 0.3);
-    }
-    50% {
-      box-shadow: 0 0 20px rgba(0, 34, 123, 0.6);
-    }
-  }
-  
-  @keyframes shimmer {
-    0% { background-position: -1000px 0; }
-    100% { background-position: 1000px 0; }
-  }
-  
-  @keyframes scale-in {
-    from {
-      opacity: 0;
-      transform: scale(0.9);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-  
-  @keyframes bounce-in {
-    0% {
-      opacity: 0;
-      transform: scale(0.3);
-    }
-    50% {
-      opacity: 1;
-    }
-    70% {
-      transform: scale(1.05);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
-  
-  @keyframes flip {
-    0% {
-      transform: perspective(400px) rotateY(0);
-    }
-    100% {
-      transform: perspective(400px) rotateY(360deg);
-    }
-  }
-  
-  @keyframes rotate-in {
-    from {
-      opacity: 0;
-      transform: rotate(-10deg) scale(0.9);
-    }
-    to {
-      opacity: 1;
-      transform: rotate(0) scale(1);
-    }
-  }
-  
-  @keyframes pop {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
-  }
-  
-  @keyframes tilt-in {
-    from {
-      opacity: 0;
-      transform: rotateX(20deg) rotateY(-20deg) translateZ(0);
-    }
-    to {
-      opacity: 1;
-      transform: rotateX(0) rotateY(0) translateZ(0);
-    }
-  }
-  
-  @keyframes float-reverse {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(20px); }
-  }
-  
-  @keyframes blob-animation {
-    0% {
-      transform: translate(0, 0) scale(1);
-    }
-    25% {
-      transform: translate(20px, -30px) scale(1.1);
-    }
-    50% {
-      transform: translate(-10px, 20px) scale(0.95);
-    }
-    75% {
-      transform: translate(-30px, -10px) scale(1.05);
-    }
-    100% {
-      transform: translate(0, 0) scale(1);
-    }
-  }
-  
-  @keyframes blob-animation-2 {
-    0% {
-      transform: translate(0, 0) scale(1);
-    }
-    25% {
-      transform: translate(-25px, 25px) scale(1.05);
-    }
-    50% {
-      transform: translate(15px, -20px) scale(0.9);
-    }
-    75% {
-      transform: translate(-20px, 25px) scale(1.1);
-    }
-    100% {
-      transform: translate(0, 0) scale(1);
-    }
-  }
-  
-  @keyframes blob-animation-3 {
-    0% {
-      transform: translate(0, 0) scale(1);
-    }
-    25% {
-      transform: translate(15px, 20px) scale(0.95);
-    }
-    50% {
-      transform: translate(-20px, -25px) scale(1.08);
-    }
-    75% {
-      transform: translate(25px, 15px) scale(1.02);
-    }
-    100% {
-      transform: translate(0, 0) scale(1);
-    }
-  }
-  
-  .animate-blob {
-    animation: blob-animation 8s infinite;
-  }
-  
-  .animate-blob-2 {
-    animation: blob-animation-2 7s infinite;
-    animation-delay: 1s;
-  }
-  
-  .animate-blob-3 {
-    animation: blob-animation-3 9s infinite;
-    animation-delay: 2s;
-  }
-  
-  @keyframes gradient-shift {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-  }
-  
-  @keyframes scroll-up {
-    from {
-      opacity: 0;
-      transform: translateY(60px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  @keyframes scroll-down {
-    from {
-      opacity: 0;
-      transform: translateY(-60px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  @keyframes scroll-left {
-    from {
-      opacity: 0;
-      transform: translateX(60px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-  
-  @keyframes scroll-right {
-    from {
-      opacity: 0;
-      transform: translateX(-60px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-  
-  @keyframes scroll-fade {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
-  @keyframes scroll-scale {
-    from {
-      opacity: 0;
-      transform: scale(0.85);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-  
+
   .scroll-up {
     opacity: 0;
-    animation: scroll-up 0.7s ease-out forwards;
-  }
-  
-  .scroll-down {
-    opacity: 0;
-    animation: scroll-down 0.7s ease-out forwards;
-  }
-  
-  .scroll-left {
-    opacity: 0;
-    animation: scroll-left 0.7s ease-out forwards;
-  }
-  
-  .scroll-right {
-    opacity: 0;
-    animation: scroll-right 0.7s ease-out forwards;
-  }
-  
-  .scroll-fade {
-    opacity: 0;
-    animation: scroll-fade 0.8s ease-out forwards;
-  }
-  
-  .scroll-scale {
-    opacity: 0;
-    animation: scroll-scale 0.7s ease-out forwards;
-  }
-  
-  .animate-float {
-    animation: float 3s ease-in-out infinite;
-  }
-  
-  .animate-float-reverse {
-    animation: float-reverse 3s ease-in-out infinite;
-  }
-  
-  .animate-slide-in {
-    animation: slide-in 0.6s ease-out;
-  }
-  
-  .animate-slide-up {
-    animation: slide-up 0.6s ease-out;
-  }
-  
-  .animate-slide-down {
-    animation: slide-down 0.6s ease-out;
-  }
-  
-  .animate-slide-left {
-    animation: slide-left 0.6s ease-out;
-  }
-  
-  .animate-slide-right {
-    animation: slide-right 0.6s ease-out;
-  }
-  
-  .animate-fade-in {
-    animation: fade-in 0.8s ease-out;
-  }
-  
-  .animate-pulse-slow {
-    animation: pulse-slow 3s ease-in-out infinite;
-  }
-  
-  .animate-glow {
-    animation: glow 2s ease-in-out infinite;
-  }
-  
-  .animate-shimmer {
-    animation: shimmer 2s infinite;
-  }
-  
-  .animate-scale-in {
-    animation: scale-in 0.5s ease-out;
-  }
-  
-  .animate-bounce-in {
-    animation: bounce-in 0.7s ease-out;
-  }
-  
-  .animate-flip {
-    animation: flip 2s ease-in-out infinite;
-  }
-  
-  .animate-rotate-in {
-    animation: rotate-in 0.6s ease-out;
-  }
-  
-  .animate-pop {
-    animation: pop 0.5s ease-out;
-  }
-  
-  .animate-tilt-in {
-    animation: tilt-in 0.8s ease-out;
-  }
-  
-  .animate-gradient-shift {
-    animation: gradient-shift 3s ease infinite;
-    background-size: 200% 200%;
-  }
-
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
+    animation: scroll-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 }
 
 @layer base {
   :root {
-    --background: 210 20% 98%; /* Neutral Background #f8fafc */
-    --foreground: 222 47% 11%; /* Deep Blue contrast text */
-    --card: 0 0% 100%; /* Standard White #ffffff */
-    --card-foreground: 222 47% 11%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
-    --primary: 223 100% 24%; /* Primary Blue #00227b */
-    --primary-foreground: 0 0% 100%;
-    --secondary: 223 68% 32%; /* Accent Blue #1a3a8a */
-    --secondary-foreground: 0 0% 100%;
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
-    --accent: 49 98% 60%; /* Action Yellow #fdd835 */
-    --accent-foreground: 223 100% 24%; /* Blue text on yellow button */
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 223 100% 24%;
-    --chart-1: 223 100% 24%;
-    --chart-2: 49 98% 60%;
-    --chart-3: 223 68% 32%;
-    --chart-4: 199 89% 48%;
-    --chart-5: 223 100% 24%;
-    --radius: 1rem;
-    --sidebar-background: 210 20% 98%;
-    --sidebar-foreground: 222 47% 11%;
-    --sidebar-primary: 223 100% 24%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 49 98% 60%;
-    --sidebar-accent-foreground: 223 100% 24%;
-    --sidebar-border: 214 32% 91%;
-    --sidebar-ring: 223 100% 24%;
+    --background: 0 0% 4%;
+    --foreground: 0 0% 96%;
+
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 96%;
+    --popover: 0 0% 6%;
+    --popover-foreground: 0 0% 96%;
+
+    --primary: 40 48% 56%;
+    --primary-foreground: 0 0% 4%;
+
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 96%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 50%;
+
+    --accent: 40 48% 56%;
+    --accent-foreground: 0 0% 4%;
+
+    --border: 0 0% 15%;
+    --input: 0 0% 12%;
+    --ring: 40 48% 56%;
+
+    --radius: 1.5rem;
   }
 
-  .dark {
-    --background: 222 47% 11%; /* Keep deep navy for dark mode base */
-    --foreground: 210 40% 98%;
-    --card: 223 47% 14%; /* Slightly lighter navy for cards */
-    --card-foreground: 210 40% 98%;
-    --popover: 223 47% 14%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 223 100% 35%; /* Lighter blue for dark mode primary */
-    --primary-foreground: 0 0% 100%;
-    --secondary: 223 68% 40%;
-    --secondary-foreground: 0 0% 100%;
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 20% 65%;
-    --accent: 49 98% 60%; /* Keep Yellow */
-    --accent-foreground: 223 100% 24%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 217 33% 20%;
-    --input: 217 33% 20%;
-    --ring: 223 100% 35%;
-    --chart-1: 223 100% 35%;
-    --chart-2: 49 98% 60%;
-    --chart-3: 223 68% 40%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
-    --sidebar-background: 222 47% 11%;
-    --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 223 100% 35%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 49 98% 60%;
-    --sidebar-accent-foreground: 223 100% 24%;
-    --sidebar-border: 217 33% 20%;
-    --sidebar-ring: 223 100% 35%;
-  }
-}
-
-@layer base {
   * {
     @apply border-border;
   }
+
   body {
-    @apply bg-background text-foreground font-sans;
-    font-family: 'Sora', sans-serif;
+    @apply bg-background text-foreground;
+    font-family: "Sora", sans-serif;
+    -webkit-font-smoothing: antialiased;
   }
-  
-  h1, h2, h3, h4, h5, h6 {
-    font-weight: 700;
-    font-family: 'Sora', sans-serif;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply tracking-tight;
+    font-family: "Sora", sans-serif;
   }
-  
-  code {
-    font-family: 'Space Mono', monospace;
+
+  ::selection {
+    background: rgba(197, 160, 89, 0.3);
+    color: #f5f5f5;
   }
 }
