@@ -44,6 +44,54 @@ const services: ServiceItem[] = [
   },
   {
     id: 1,
+    title: "Signature Auto Spa",
+    price: "285,000",
+    time: "3-4 Hours",
+    vehicles: "All Vehicle Types",
+    description:
+      "The complete Bubbles Bay experience. A meticulous spa treatment combining exterior restoration, interior rejuvenation, and protective finishing for showroom-perfect results.",
+    image: "./auto-spa.avif",
+    features: [
+      {
+        name: "Full Exterior Detail",
+        desc: "Hand wash, clay bar, and premium wax application.",
+      },
+      {
+        name: "Interior Restoration",
+        desc: "Deep steam cleaning of all surfaces and upholstery.",
+      },
+      {
+        name: "Leather Treatment",
+        desc: "Professional conditioning and UV protection.",
+      },
+    ],
+  },
+  {
+    id: 2,
+    title: "Premium Dry Cleaning",
+    price: "95,000",
+    time: "2 Hours",
+    vehicles: "None",
+    description:
+      "Specialized dry cleaning treatment for delicate fabrics and upholstery. Expert stain removal and fabric protection without moisture damage, perfect for maintaining pristine interiors.",
+    image: "./dry-cleaning.avif",
+    features: [
+      {
+        name: "Fabric Dry Cleaning",
+        desc: "Solvent-based cleaning for delicate materials.",
+      },
+      {
+        name: "Stain Extraction",
+        desc: "Advanced techniques for stubborn stains and odors.",
+      },
+      {
+        name: "Fabric Protection",
+        desc: "Scotchgard application for lasting stain resistance.",
+      },
+    ],
+  },
+  {
+    id: 3,
     title: "Ceramic Coating",
     price: "450,000",
     time: "2 Days",
@@ -64,7 +112,7 @@ const services: ServiceItem[] = [
     ],
   },
   {
-    id: 2,
+    id: 4,
     title: "Interior Deep Cleaning",
     price: "312,000",
     time: "3 Hours",
@@ -88,7 +136,7 @@ const services: ServiceItem[] = [
     ],
   },
   {
-    id: 3,
+    id: 5,
     title: "Engine Detailing",
     price: "85,000",
     time: "1 Hour",
@@ -120,7 +168,7 @@ const ServiceCard = ({
   setIsModalOpen: (open: boolean) => void;
 }) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { margin: "-20% 0px -80% 0px" });
+  const isInView = useInView(ref, { margin: "-20% 0px -60% 0px" });
 
   useEffect(() => {
     if (isInView) {
