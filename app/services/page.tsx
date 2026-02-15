@@ -24,7 +24,7 @@ const services: ServiceItem[] = [
   {
     id: 0,
     title: "Full Service Wash",
-    price: "120,000",
+    price: "5,000",
     time: "1.5 Hours",
     vehicles: "Coupe/Sedan/SUV",
     description:
@@ -45,7 +45,7 @@ const services: ServiceItem[] = [
   {
     id: 1,
     title: "Signature Auto Spa",
-    price: "285,000",
+    price: "20,000",
     time: "3-4 Hours",
     vehicles: "All Vehicle Types",
     description:
@@ -69,8 +69,8 @@ const services: ServiceItem[] = [
   {
     id: 2,
     title: "Premium Dry Cleaning",
-    price: "95,000",
-    time: "2 Hours",
+    price: "custom pricing",
+    time: "—",
     vehicles: "None",
     description:
       "Specialized dry cleaning treatment for delicate fabrics and upholstery. Expert stain removal and fabric protection without moisture damage, perfect for maintaining pristine interiors.",
@@ -92,8 +92,8 @@ const services: ServiceItem[] = [
   },
   {
     id: 3,
-    title: "Ceramic Coating",
-    price: "450,000",
+    title: "Buffing and Ceramic Coating",
+    price: "20,000",
     time: "2 Days",
     vehicles: "All Sizes",
     description:
@@ -114,7 +114,7 @@ const services: ServiceItem[] = [
   {
     id: 4,
     title: "Interior Deep Cleaning",
-    price: "312,000",
+    price: "10,000",
     time: "3 Hours",
     vehicles: "Coupe/Sedan/SUV",
     description:

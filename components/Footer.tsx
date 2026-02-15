@@ -105,6 +105,16 @@ const Footer = () => {
               Crafted for Excellence
             </span>
           </div>
+          <a
+            href="https://nexorrastudio.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 group"
+          >
+            <span className="text-[9px] font-black uppercase tracking-[0.4em] text-[#444] group-hover:text-[#C5A059] transition-colors">
+              Built by Nexorra Studio
+            </span>
+          </a>
         </div>
       </div>
     </footer>
