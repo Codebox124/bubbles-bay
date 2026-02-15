@@ -27,7 +27,6 @@ import {
   ChevronLeft,
 } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
-import Navbar from "@/components/NavBar";
 import { services } from "@/data/services";
 import Hero from "@/components/Hero";
 import Benefits from "@/components/Benefits";
@@ -37,7 +36,6 @@ import Pricing from "@/components/Pricing";
 import Testimonials from "@/components/Testimonials";
 import Location from "@/components/Location";
 import Newsletter from "@/components/Newsletter";
-import Footer from "@/components/Footer";
 import BookingModal from "@/components/BookingModal";
 
 export default function App() {
@@ -114,8 +112,6 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-white text-[#00227b] font-sans selection:bg-[#fdd835] selection:text-[#00227b]">
-      <Navbar onBookClick={() => setIsModalOpen(true)} />
-
       <Hero setIsModalOpen={setIsModalOpen} />
 
       <Benefits benefits={benefits} />
@@ -139,7 +135,6 @@ export default function App() {
       {/* Newsletter Section */}
       <Newsletter />
 
-      <Footer />
       {/* Booking Modal */}
       <BookingModal
         isModalOpen={isModalOpen}
