@@ -131,24 +131,41 @@ const ServiceCard = ({
   return (
     <div
       ref={ref}
-      className="min-h-screen flex items-center py-24 px-6 md:px-20 relative z-10"
+      className="min-h-screen flex flex-col lg:items-center py-16 md:py-24 px-4 sm:px-6 md:px-12 lg:px-20 relative z-10"
     >
-      <div className="max-w-xl">
+      <div className="lg:hidden w-full mb-8 md:mb-12 rounded-2xl overflow-hidden">
+        <div className="relative h-[300px] md:h-[400px]">
+          <img
+            src={service.image}
+            alt={service.title}
+            className="w-full h-full object-cover grayscale-[50%] opacity-70"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent"></div>
+          <div className="absolute bottom-6 left-6 z-10">
+            <span className="text-white/40 font-black italic text-5xl">
+              0{service.id + 1}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-xl w-full">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="flex flex-wrap gap-4 mb-10"
+          className="flex flex-wrap gap-3 md:gap-4 mb-8 md:mb-10"
         >
-          <span className="px-5 py-2 rounded-full border border-[#0A0A0A]/5 bg-[#FAFAFA] text-[#0A0A0A] text-[10px] font-black uppercase tracking-[0.2em] flex items-center gap-2 shadow-sm">
+          <span className="px-4 py-2 md:px-5 md:py-2 rounded-full border border-[#0A0A0A]/5 bg-[#FAFAFA] text-[#0A0A0A] text-[10px] font-black uppercase tracking-[0.2em] flex items-center gap-2 shadow-sm">
             <Tag size={12} className="text-[#C5A059]" /> ₦{service.price}
           </span>
-          <span className="px-5 py-2 rounded-full border border-[#0A0A0A]/5 bg-[#FAFAFA] text-[#0A0A0A] text-[10px] font-black uppercase tracking-[0.2em] flex items-center gap-2 shadow-sm">
+          <span className="px-4 py-2 md:px-5 md:py-2 rounded-full border border-[#0A0A0A]/5 bg-[#FAFAFA] text-[#0A0A0A] text-[10px] font-black uppercase tracking-[0.2em] flex items-center gap-2 shadow-sm">
             <Clock size={12} className="text-[#C5A059]" /> {service.time}
           </span>
         </motion.div>
 
-        <h3 className="text-6xl md:text-7xl font-medium text-[#0A0A0A] uppercase italic tracking-tighter mb-8 leading-[0.9]">
+        <h3 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium text-[#0A0A0A] uppercase italic tracking-tighter mb-6 md:mb-8 leading-[1.1] md:leading-[0.9]">
           {service.title.split("-").map((word, i) => (
             <span
               key={i}
@@ -161,17 +178,17 @@ const ServiceCard = ({
           ))}
         </h3>
 
-        <p className="text-[#666] text-lg leading-relaxed mb-12 font-medium max-w-md border-l-2 border-[#C5A059] pl-6">
+        <p className="text-[#666] text-base md:text-lg leading-relaxed mb-10 md:mb-12 font-medium max-w-md border-l-2 border-[#C5A059] pl-4 md:pl-6">
           {service.description}
         </p>
 
-        <div className="space-y-4 mb-14">
+        <div className="space-y-3 md:space-y-4 mb-10 md:mb-14">
           {service.features.map((feature, idx) => (
             <div
               key={idx}
-              className="group flex items-start gap-5 p-5 rounded-2xl hover:bg-[#FAFAFA] transition-all duration-500 border border-transparent hover:border-[#F0F0F0]"
+              className="group flex items-start gap-4 md:gap-5 p-4 md:p-5 rounded-xl md:rounded-2xl hover:bg-[#FAFAFA] transition-all duration-500 border border-transparent hover:border-[#F0F0F0]"
             >
-              <div className="w-6 h-6 rounded-full border border-[#C5A059]/30 flex items-center justify-center flex-shrink-0 mt-1 group-hover:bg-[#C5A059] group-hover:border-[#C5A059] transition-all">
+              <div className="w-6 h-6 rounded-full border border-[#C5A059]/30 flex items-center justify-center flex-shrink-0 mt-0.5 md:mt-1 group-hover:bg-[#C5A059] group-hover:border-[#C5A059] transition-all">
                 <Check
                   size={12}
                   className="text-[#C5A059] group-hover:text-white"
@@ -192,7 +209,7 @@ const ServiceCard = ({
 
         <button
           onClick={() => setIsModalOpen(true)}
-          className="group flex items-center gap-6 bg-[#0A0A0A] text-white px-12 py-7 rounded-2xl font-black uppercase text-[10px] tracking-[0.4em] hover:bg-[#C5A059] hover:text-[#0A0A0A] transition-all duration-500 shadow-2xl"
+          className="group flex items-center justify-center gap-4 md:gap-6 bg-[#0A0A0A] text-white px-10 py-5 md:px-12 md:py-7 rounded-xl md:rounded-2xl font-black uppercase text-[10px] tracking-[0.4em] hover:bg-[#C5A059] hover:text-[#0A0A0A] transition-all duration-500 shadow-2xl w-full md:w-auto"
         >
           Secure Booking
           <ArrowRight
@@ -210,14 +227,14 @@ const ServicesPage: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   return (
-    <div className="bg-white font-sans text-[#0A0A0A] relative">
-      <header className="pt-32 pb-12 px-6 lg:hidden bg-[#0A0A0A]">
-        <h1 className="text-5xl font-black uppercase tracking-tighter italic text-white">
+    <div className="bg-[#0A0A0A] font-sans text-[#0A0A0A] relative pt-20 lg:pt-28">
+      <header className="pt-24 md:pt-32 pb-8 md:pb-12 px-4 sm:px-6 lg:hidden bg-[#0A0A0A] -mt-20">
+        <h1 className="text-4xl sm:text-5xl font-black uppercase tracking-tighter italic text-white leading-[1.1]">
           Our <span className="text-[#C5A059]">Services</span>
         </h1>
       </header>
 
-      <div className="relative flex flex-col lg:flex-row">
+      <div className="relative flex flex-col lg:flex-row -mt-20 lg:mt-0">
         <div className="hidden lg:block w-[45%] h-screen sticky top-0 overflow-hidden bg-[#050505]">
           <AnimatePresence mode="wait">
             {services.map(
