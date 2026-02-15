@@ -10,7 +10,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-[#050505] pt-32 pb-12 px-6 text-white overflow-hidden relative border-t border-white/5">
+    <footer className="bg-[#050505] pt-16 md:pt-32 pb-8 md:pb-12 px-4 sm:px-6 text-white overflow-hidden relative border-t border-white/5">
       <div className="absolute -bottom-10 -right-10 select-none pointer-events-none opacity-[0.02]">
         <span className="text-[25vw] font-black uppercase leading-none italic">
           Bubbles
@@ -18,10 +18,10 @@ const Footer = () => {
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-16 md:gap-20 mb-24">
-          <div className="col-span-1 md:col-span-2 space-y-10">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-16 lg:gap-20 mb-16 md:mb-24">
+          <div className="col-span-1 md:col-span-2 space-y-6 md:space-y-10">
             <Logo />
-            <p className="text-[#808080] text-xl font-medium leading-relaxed max-w-md italic tracking-tight">
+            <p className="text-[#808080] text-lg md:text-xl font-medium leading-relaxed max-w-md italic tracking-tight">
               The ultimate automotive grooming experience in Malete.
               <span className="text-[#C5A059]">
                 {" "}
@@ -30,11 +30,11 @@ const Footer = () => {
             </p>
           </div>
 
-          <div className="space-y-10">
+          <div className="space-y-6 md:space-y-10">
             <h5 className="font-black uppercase tracking-[0.4em] text-[10px] text-[#C5A059]">
               The Menu
             </h5>
-            <div className="flex flex-col gap-5 text-[#666] font-black uppercase text-[10px] tracking-[0.3em]">
+            <div className="flex flex-col gap-4 md:gap-5 text-[#666] font-black uppercase text-[10px] tracking-[0.3em]">
               {["services", "benefits", "reviews", "location"].map((link) => (
                 <a
                   key={link}
@@ -47,24 +47,30 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="space-y-10">
+          <div className="space-y-6 md:space-y-10">
             <h5 className="font-black uppercase tracking-[0.4em] text-[10px] text-[#C5A059]">
               Inner Circle
             </h5>
-            <div className="flex flex-col gap-8">
-              <div className="flex gap-8 text-[#666]">
-                <Instagram
-                  className="hover:text-[#C5A059] cursor-pointer transition-all hover:-translate-y-1"
-                  size={20}
-                />
-                <Facebook
-                  className="hover:text-[#C5A059] cursor-pointer transition-all hover:-translate-y-1"
-                  size={20}
-                />
-                <MessageCircle
-                  className="hover:text-[#C5A059] cursor-pointer transition-all hover:-translate-y-1"
-                  size={20}
-                />
+            <div className="flex flex-col gap-6 md:gap-8">
+              <div className="flex gap-6 md:gap-8 text-[#666]">
+                <a href="#" aria-label="Instagram">
+                  <Instagram
+                    className="hover:text-[#C5A059] cursor-pointer transition-all hover:-translate-y-1"
+                    size={20}
+                  />
+                </a>
+                <a href="#" aria-label="Facebook">
+                  <Facebook
+                    className="hover:text-[#C5A059] cursor-pointer transition-all hover:-translate-y-1"
+                    size={20}
+                  />
+                </a>
+                <a href="#" aria-label="Message">
+                  <MessageCircle
+                    className="hover:text-[#C5A059] cursor-pointer transition-all hover:-translate-y-1"
+                    size={20}
+                  />
+                </a>
               </div>
 
               <button
@@ -83,8 +89,8 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="flex flex-col md:flex-row items-center gap-4 md:gap-10">
+        <div className="pt-8 md:pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 md:gap-8">
+          <div className="flex flex-col md:flex-row items-center gap-3 md:gap-10">
             <span className="text-[9px] font-black uppercase tracking-[0.5em] text-[#333]">
               © 2026 Bubbles Bay Auto Spa
             </span>
