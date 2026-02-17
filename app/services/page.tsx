@@ -25,7 +25,7 @@ const services: ServiceItem[] = [
     id: 0,
     title: "Full Service Wash",
     price: "5,000",
-    time: "1.5 Hours",
+    time: "25 — 45 Minutes",
     vehicles: "Coupe/Sedan/SUV",
     description:
       "A comprehensive interior and exterior cleaning using pH-balanced soaps and premium microfiber techniques to ensure a swirl-free finish.",
@@ -46,7 +46,7 @@ const services: ServiceItem[] = [
     id: 1,
     title: "Signature Auto Spa",
     price: "20,000",
-    time: "3-4 Hours",
+    time: "25 — 45 Minutes",
     vehicles: "All Vehicle Types",
     description:
       "The complete Bubbles Bay experience. A meticulous spa treatment combining exterior restoration, interior rejuvenation, and protective finishing for showroom-perfect results.",
@@ -94,7 +94,7 @@ const services: ServiceItem[] = [
     id: 3,
     title: "Buffing and Ceramic Coating",
     price: "20,000",
-    time: "2 Days",
+    time: "25 — 45 Minutes",
     vehicles: "All Sizes",
     description:
       "The ultimate 9H hardness protection. This nano-glass layer provides unmatched gloss, chemical resistance, and self-cleaning properties.",
@@ -115,7 +115,7 @@ const services: ServiceItem[] = [
     id: 4,
     title: "Interior Deep Cleaning",
     price: "10,000",
-    time: "3 Hours",
+    time: "25 — 45 Minutes",
     vehicles: "Coupe/Sedan/SUV",
     description:
       "A full-service deep clean of your vehicle's interior — from carpets and seats to every surface and crevice, leaving it fresh and spotless.",
@@ -138,8 +138,8 @@ const services: ServiceItem[] = [
   {
     id: 5,
     title: "Engine Detailing",
-    price: "85,000",
-    time: "1 Hour",
+    price: "3,000",
+    time: "25 — 45 Minutes",
     vehicles: "All Engines",
     description:
       "Precision degreasing and detailing of your engine bay to improve heat dissipation and aesthetic appeal. Safe for all electronics.",
@@ -153,6 +153,30 @@ const services: ServiceItem[] = [
       {
         name: "Plastic Dressing",
         desc: "Restores factory-look to hoses and covers.",
+      },
+    ],
+  },
+  {
+    id: 6,
+    title: "Pickup & Drop Off",
+    price: "5,000",
+    time: "Same Day",
+    vehicles: "All Vehicles",
+    description:
+      "We bring the convenience to you. Our team picks up your vehicle from your location, delivers premium detailing at our facility, and returns it spotless to your doorstep.",
+    image: "./pickup-dropoff.avif",
+    features: [
+      {
+        name: "Vehicle Pickup",
+        desc: "We collect your vehicle from anywhere in Malete.",
+      },
+      {
+        name: "Professional Transport",
+        desc: "Insured drivers and secure handling guaranteed.",
+      },
+      {
+        name: "Doorstep Return",
+        desc: "Vehicle returned clean and ready at your location.",
       },
     ],
   },
