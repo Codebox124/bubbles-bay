@@ -12,7 +12,7 @@ const Pricing = ({
   const pricingPlans = [
     {
       name: "The Quick Wash",
-      price: "120,000",
+      price: "5,000",
       icon: <Zap size={20} />,
       desc: "Essential maintenance for the daily driver.",
       popular: false,
@@ -25,7 +25,7 @@ const Pricing = ({
     },
     {
       name: "The Full Detail",
-      price: "312,000",
+      price: "20,000",
       icon: <Handshake size={20} />,
       desc: "Our signature deep-clean restoration.",
       popular: true,
@@ -38,13 +38,12 @@ const Pricing = ({
       ],
     },
     {
-      name: "The Ceramic Shield",
-      price: "450,000",
+      name: "Buffing and Ceramic Coating",
+      price: "20,000",
       icon: <ShieldCheck size={20} />,
       desc: "The ultimate long-term paint protection.",
       popular: false,
       features: [
-        "Everything in Full Detail",
         "9H Nano-Ceramic Coating",
         "Multi-Stage Paint Correction",
         "Glass & Rim Protection",
