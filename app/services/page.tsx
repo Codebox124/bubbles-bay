@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { Check, Clock, Tag, ArrowRight } from "lucide-react";
+import { useModal } from "@/components/ModalContext";
 
 interface Feature {
   name: string;
@@ -296,7 +297,7 @@ const ServiceCard = ({
 
 const ServicesPage: React.FC = () => {
   const [activeService, setActiveService] = useState<number>(0);
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const setIsModalOpen = useModal();
 
   return (
     <div className="bg-[#0A0A0A] font-sans text-[#0A0A0A] relative pt-20 lg:pt-28">
